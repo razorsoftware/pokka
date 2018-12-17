@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Alert } from 'react-native';
-
-import Menu from '../components/Menu';
+import { View, Text, Alert,TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+//import Menu from '../components/Menu';
+import Routes from "../Routes";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -11,28 +12,15 @@ export default class Dashboard extends Component {
       longitude: ""
     };
   }
+
+
   static navigationOptions = {
     title: "Início"
   }
 
   componentDidMount() {
 
-    try {
-
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        //Sucess =====
-        pos = pos.coords;
-        Alert.alert("", "Latitude " + pos.latitude + " longitude " + pos.longitude);
-
-      },
-        function (err) {
-          // Error
-
-        }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
-
-    } catch{
-
-    }
+ 
 
   }
 
@@ -41,13 +29,23 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <View>
-        <View>
-          <Menu />
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View  style={{ flex: 0.3333, height: 55, backgroundColor: '#dfe6e9'}}>
+          <TouchableOpacity style={{justiftyContent:"center", alignItems:"center" }} onPress={() =>  this.props.navigation.navigate("Pessoas_proximas")}>
+            <Icon name="map-marker" style={{marginBottom:10,marginTop:5}} size={24} color="#e84393"/>
+            <Text style={{textAlign:'center',fontSize:8,color:"#74b9ff"}}>Próximo de Mim</Text>
+          </TouchableOpacity>
         </View>
-
-
-
+  
+        <View style={{ flex: 0.3333, height: 55, backgroundColor: '#dfe6e9',justiftyContent:"center", alignItems:"center" }}>
+          <Icon name="users" style={{marginBottom:10,marginTop:5}} size={24} color="#e84393"/>
+          <Text style={{textAlign:'center',fontSize:8,color:"#74b9ff"}}>Amigos</Text>
+        </View>
+  
+        <View style={{ flex: 0.3333, height: 55, backgroundColor: '#dfe6e9',justiftyContent:"center", alignItems:"center" }}>
+          <Icon name="comments" style={{marginBottom:10,marginTop:5}} size={24} color="#e84393"/>
+          <Text style={{textAlign:'center',fontSize:8,color:"#74b9ff"}}>Mensagem</Text>
+        </View>
       </View>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,Alert, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { StackActions, NavigationActions } from 'react-navigation';
 
