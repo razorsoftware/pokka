@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View,TouchableOpacity,StyleSheet,Alert } from 'react-native'
 
+import Gps from '../components/Gps';
+
 export default class Pessoas_proximas extends Component {
     static navigationOptions = {
         title: "Pessoas Proximas"
@@ -11,25 +13,7 @@ export default class Pessoas_proximas extends Component {
         buscar_geolocal:true        
       }
 
-    handleBuscarGeolocalizacao = ()=>{
-        try {
-            this.setState({buscar_geolocal:false})
-            navigator.geolocation.getCurrentPosition(function (pos) {
-              //Sucess =====
-              pos = pos.coords;
-              Alert.alert("", "Latitude " + pos.latitude + " longitude " + pos.longitude);
-      
-            },
-              function (err) {
-                Alert.alert("Erro ao buscaro Geolocalização",err );
-      
-      
-              }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
-      
-          } catch{
-      
-          }
-    }
+   
 
     componentDidMount(){
        // if(this.state.geolocalizacao == "")
@@ -39,23 +23,14 @@ export default class Pessoas_proximas extends Component {
     render() {
         return (
             <View>
-                {
-                    renderIf(this.state.buscar_geolocal)(
-                        <View hide={true}>
-                            <TouchableOpacity style={styles.button}
-                                onPress={this.handleBuscarGeolocalizacao}>
-                                <Text style={styles.buttonText}>Buscar Localização</Text>
-                            </TouchableOpacity>
-
-                            <Text> Pessoas Próximas </Text>
-                        </View>
-                    )
-                }
+                {this.state.buscar_geolocal ? <Gps /> : null }   
+                
             </View>
         )
     }
 }
 
+ 
 
 const styles = StyleSheet.create({
   

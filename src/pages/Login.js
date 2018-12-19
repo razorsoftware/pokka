@@ -5,7 +5,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 import api from '../services/api';
-export default class Login extends Component {
+
+// Redux 
+import { connect } from 'react-redux';
+import { Autenticacao } from '../actions/autenticacao';
+
+class Login extends Component {
 
   static navigationOptions = {
     header: null
@@ -24,6 +29,9 @@ export default class Login extends Component {
   }
 
   navigateToDashboard = () => {
+
+    this.props.add(this.state.username);
+
     const resetAction = StackActions.reset({
       index: 0,
       actions: [NavigationActions.navigate({ routeName: "Dashboard" })]
@@ -32,6 +40,7 @@ export default class Login extends Component {
   }
 
   handleUserChange = username => {
+  //  this.props.add(username);
     this.setState({ username });
   }
 
@@ -51,6 +60,8 @@ export default class Login extends Component {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.content}>
+        <Text>  {this.state.username}</Text>
+      
           <TextInput
             style={styles.input}
             placeholder="Seu Numero"
@@ -123,3 +134,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
+
+// REDUX ============================
+
+const mapStateToProps = state => {
+  return {
+    username: state.login.username
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+
+  return {    
+    add: (username) => {
+      console.log("wtf");
+      dispatch(Autenticacao(username));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
