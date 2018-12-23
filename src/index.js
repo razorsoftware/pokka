@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 import Routes from "./Routes";
-import { Provider, connect } from 'react-redux';
-import configureStore from './store';
-const store = configureStore();
+import { Provider } from 'react-redux';
+import {Store} from './store';
 
 export default class App extends Component {
 
@@ -13,7 +12,7 @@ export default class App extends Component {
 
     //return <Routes />
     return (
-      <Provider store={store}>
+      <Provider store={Store}>
         <Routes />
       </Provider>
 

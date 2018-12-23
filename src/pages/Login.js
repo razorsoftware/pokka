@@ -57,10 +57,13 @@ class Login extends Component {
   }
 
   render() {
+
+    const{redux_username} = this.props;
+
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.content}>
-        <Text>  {this.state.username}</Text>
+        <Text>  {redux_username}</Text>
       
           <TextInput
             style={styles.input}
@@ -138,20 +141,20 @@ const styles = StyleSheet.create({
 
 // REDUX ============================
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {  
   return {
-    username: state.login.username
+    redux_username: store.getUser.username
   }
 }
 
-const mapDispatchToProps = dispatch => {
+//const mapDispatchToProps = dispatch => {
 
-  return {    
-    add: (username) => {
-      console.log("wtf");
-      dispatch(Autenticacao(username));
-    }
-  }
-}
+//  return {    
+//    add: (username) => {
+//      console.log("wtf");
+//      dispatch(Autenticacao(username));
+//    }
+//  }
+//}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps)(Login)

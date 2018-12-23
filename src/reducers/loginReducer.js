@@ -1,23 +1,41 @@
-
-import { LOGIN } from '../actions/types';
+import {GET_USER} from '../actions/types';
 
 const initialState = {
-  username: 'teste'
+  username: 'Funciou porra !'
 };
 
-const loginReducer = (state = initialState, action) => {
-  console.log("wtf");
+export const GET_USER_REDUCER = (state = initialState, action) => {
   switch(action.type) {
-    case LOGIN:
+    case GET_USER:
       //return username:action.us;
       return {
-        ...state,
-        username: action.username
-      
+        state        
       };
     default:
       return state;
   }
 }
 
-export default loginReducer;
+
+//import { LOGIN } from '../actions/types';
+
+//const initialState = {
+//  username: 'teste'
+//};
+
+//const loginReducer = (state = initialState, action) => {
+//  console.log("wtf");
+//  switch(action.type) {
+ //   case LOGIN:
+      //return username:action.us;
+//      return {
+ //       ...state,
+  //      username: action.username
+      
+    //  };
+  ///  default:
+    //  return state;
+ // }/
+//}
+
+//export default loginReducer;

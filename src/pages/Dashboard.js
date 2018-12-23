@@ -26,14 +26,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-
-
-
   }
-
-
-
-
   render() {
     return (
       <View>
