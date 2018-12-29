@@ -1,1 +1,3 @@
 export const GET_USER = 'GET_USER'
+export const GET_GEOLOCATION = 'GET_GEOLOCATION'
+export const SET_GEOLOCATION = 'SET_GEOLOCATION'

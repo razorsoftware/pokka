@@ -61,15 +61,14 @@ class Criar_usuario extends Component {
             sexo:this.state.sexo
         };
 
-        api.post('/pokka/usuario/criar', post).then(function(){
+        api.post('/pokka/usuario/criar', post).then(function(res){
             Alert.alert("","Cadastro realizado com sucesso !");
-          
+            this.props.navigation.pop();       
         }).catch(function(error) {
-            Alert.alert("", error.message);
-            return;
+            Alert.alert("", "Falha de comunicação ou usuario já existente com este numero !");          
         });
 
-        this.goback();
+        //
     }
 
     handleUserChange = usuario => {

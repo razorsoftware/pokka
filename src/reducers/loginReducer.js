@@ -1,20 +1,39 @@
-import {GET_USER} from '../actions/types';
+import {GET_USER,SET_GEOLOCATION} from '../actions/types';
 
 const initialState = {
-  username: 'Funciou porra !'
+  username: 'Funcionou porra !',
+  latitude: '',
+  longitude : ''
 };
 
-export const GET_USER_REDUCER = (state = initialState, action) => {
+export const GEOLOCATION = (state = initialState, action) => {
   switch(action.type) {
     case GET_USER:
       //return username:action.us;
       return {
         state        
       };
+      case SET_GEOLOCATION:
+      return {
+        ...state,
+        username: "Trocou"
+      };
     default:
       return state;
   }
 }
+
+//export const GEOLOCATION = (state = initialState, action) => {
+//  switch(action.type) {
+//    case SET_GEOLOCATION:
+//      return {
+//        ...state,
+//        username: "Trocou"
+//      };
+//    default:
+//      return state;
+//  }/
+//}
 
 
 //import { LOGIN } from '../actions/types';

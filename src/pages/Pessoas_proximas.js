@@ -18,12 +18,14 @@ export default class Pessoas_proximas extends Component {
     componentDidMount(){
        // if(this.state.geolocalizacao == "")
        //     this.setState({buscar_geolocal:true})
+       // //this.state.buscar_geolocal ? <Gps /> : null }   
     }
 
     render() {
         return (
-            <View>
-                {this.state.buscar_geolocal ? <Gps /> : null }   
+            <View style={{ flex: 1 }}>
+                {<Gps />}
+                
                 
             </View>
         )

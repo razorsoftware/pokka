@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //import Menu from '../components/Menu';
 import Routes from "../Routes";
 
+import SQLite from 'react-native-sqlite-storage';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -28,8 +29,13 @@ class Dashboard extends Component {
   componentDidMount() {
   }
   render() {
+
+    const{redux_latitude} = this.props;
+    const{redux_longitude,redux_username} = this.props;
+    
     return (
       <View>
+        
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={{ flex: 0.3333, height: 55, backgroundColor: '#dfe6e9' }}>
             <TouchableOpacity style={{ justiftyContent: "center", alignItems: "center" }} onPress={() => this.props.navigation.navigate("Pessoas_proximas")}>
@@ -49,16 +55,20 @@ class Dashboard extends Component {
           </View>
 
         </View>
-        <Text>  {this.state.username}</Text>
+        <View>
+        <Text>Eita {redux_latitude + " - " + redux_longitude + "" + redux_username}</Text>
+        </View>
       </View>
     );
   }
 }
 
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    username: state.login.username
+    redux_latitude: store.geolocal.latitude,
+    redux_longitude: store.geolocal.longitude,
+    redux_username: store.geolocal.username
   }
 }
 
